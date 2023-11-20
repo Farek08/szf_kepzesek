@@ -1,23 +1,16 @@
-const express = require('express')
-const router = express.Router()
-router.get("/", (req, res) => {
-    res.status(200).json({ success: true, msg: "Összes képzés" });
-});
-router.get("/:id", (req, res) => {
-    res.status(200).json({ success: true, msg: `A ${req.params.id} id-val rendelkező képzés` });
-});
-router.post("/", (req, res) => {
-    res.status(201).json({ success: true, msg: "Új képzés létrehozása" });
-});
-router.put("/:id", (req, res) => {
-    res
-        .status(200)
-        .json({ success: true, msg: `A ${req.params.id} id-vel rendelkező képzés frissítése` });
-});
-router.delete("/:id", (req, res) => {
-    res
-        .status(204)
-        .json({ success: true, msg: `A ${req.params.id} id-vel rendelkező képzés törlése` });
-});
-
-module.exports = router
+const express = require("express");
+const {
+    getTraining,
+    getTrainings,
+    createTraining,
+    updateTraining,
+    deleteTraining,
+} = require("../controllers/trainings");
+const router = express.Router();
+router.route("/").get(getTrainings).post(createTraining);
+router
+    .route("/:id")
+    .get(getTraining)
+    .put(updateTraining)
+    .delete(deleteTraining);
+module.exports = router;
