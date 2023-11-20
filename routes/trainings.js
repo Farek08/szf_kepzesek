@@ -1,23 +1,23 @@
 const express = require('express')
 const router = express.Router()
 router.get("/", (req, res) => {
-    res.status(200).json({ success: true, msg: "Show all trainings" });
+    res.status(200).json({ success: true, msg: "Összes képzés" });
 });
 router.get("/:id", (req, res) => {
-    res.status(200).json({ success: true, msg: `Get course ${req.params.id}` });
+    res.status(200).json({ success: true, msg: `A ${req.params.id} id-val rendelkező képzés` });
 });
 router.post("/", (req, res) => {
-    res.status(201).json({ success: true, msg: "Create new course" });
+    res.status(201).json({ success: true, msg: "Új képzés létrehozása" });
 });
 router.put("/:id", (req, res) => {
     res
         .status(200)
-        .json({ success: true, msg: `Update course ${req.params.id}` });
+        .json({ success: true, msg: `A ${req.params.id} id-vel rendelkező képzés frissítése` });
 });
 router.delete("/:id", (req, res) => {
     res
         .status(204)
-        .json({ success: true, msg: `Delete course ${req.params.id}` });
+        .json({ success: true, msg: `A ${req.params.id} id-vel rendelkező képzés törlése` });
 });
 
 module.exports = router
